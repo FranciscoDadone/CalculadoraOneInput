@@ -36,8 +36,11 @@ def calculate(var_entrada):
             
             res1 = var_entrada.split('(', 1)
             res2 = var_entrada.split(')', 1)
-            
-            var_entrada = res1[0] + calculate(cache.replace(')', '')) + res2[1]
+
+            if(cache.count('+') or cache.count('-') or cache.count('*') or cache.count('/')):
+                cache1 = calculate(cache.replace(')', ''))
+
+            var_entrada = res1[0] + calculate(cache1.replace(')', '')) + res2[1]
 
             notContinueParentesis = True
 
@@ -77,7 +80,7 @@ def calculate(var_entrada):
             delta1 = ""
             vuelta = 0
             for i in var_entrada:
-                if(i == '-' and vuelta > 1):
+                if(i == '-' and vuelta >= 1):
                     delta += '+-'
                 else:
                     delta += i
