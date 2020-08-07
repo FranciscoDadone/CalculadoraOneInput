@@ -36,14 +36,8 @@ def calculate(var_entrada):
             
             res1 = var_entrada.split('(', 1)
             res2 = var_entrada.split(')', 1)
-            x = cache.split('/')
-            if(cache.count('+') or cache.count('-') or cache.count('*')):
-                var_entrada = res1[0] + calculate(cache.replace(')', '')) + res2[1]
-            else:
-                x = cache.split('/')
-                x0 = x[0].replace('(', '')
-                x1 = x[1].replace(')', '')
-                var_entrada = res1[0] + str(division(int(x0), int(x1))) + res2[1]
+            
+            var_entrada = res1[0] + calculate(cache.replace(')', '')) + res2[1]
 
             notContinueParentesis = True
 
